@@ -1,0 +1,43 @@
+{% for x in listaJson %}
+        <div class="col-sm-4 justify-content-center d-flex">
+          <!-- el contendido centrado -->
+
+          <div class="m-3 card" style="width: 400px">
+            <!--m-3 separa las cartas para que no queden pegadas-->
+
+            {% if x.imagen %}
+            <img src="{{ x.imagen }}" class="img-fluid item-img w-100 mb-3" height="200" />
+            {% else %}
+            <img src="{% static 'app/img/defecto.jpg' %}" class="img-fluid item-img w-100 mb-3" />
+            {% endif %}
+            <div class="card-body">
+              <h4 class="card-title">{{x.nombreP}} ({{x.marca}})</h4>
+              <div class="d-flex justify-content-center">
+                <p class="card-text">${{x.precio}}</p>
+              </div>
+
+              <div class="d-flex justify-content-center">
+                <p class="card-text">Stock: {{x.stock}}</p>
+              </div>
+              <form action="" method="POST">
+                <div class="d-flex justify-content-between">
+                  {% csrf_token %}
+                  <input type="hidden" name="codigo" id="codigo" value="{{ x.codigo }}" />
+                  <input type="hidden" name="nombre" id="nombre" value="{{ x.nombre }}" />
+                  <input type="hidden" name="marca" id="marca" value="{{ x.marca }}" />
+                  <input type="hidden" name="precio" id="precio" value="{{ x.precio }}" />
+                  <input type="hidden" name="stock" id="stock" value="{{ x.stock }}" />
+                  <input type="hidden" name="tipo" id="tipo" value="{{ x.tipo }}" />
+                  <input type="hidden" name="imagen" id="imagen" value="{{ x.imagen }}" />
+                  <button type="submit" class="btn btn-success">
+                    Agregar al Carrito
+                  </button>
+
+                  <a href="../pago" class="btn btn-primary">comprar</a>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        {% endfor %}

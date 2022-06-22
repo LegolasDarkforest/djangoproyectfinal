@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+  {% load static %}
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Carrito</title>
+    <!--foto pequeña de flores ,de la parte superior -->
+    <link
+      rel="shortcut icon"
+      href="{% static 'app/img/Veranera.jpeg' %}"
+      type="image/x-icon"
+    />
+    <!--foto pequeña de flores ,de la parte superior -->
+
+    <!--Boostrap 5.1.3-->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{% static 'app/css/product.css' %}" />
+  </head>
+
+  <body>
+    <!--DENTRO DE HEADER VA EL NAVBAR QUE ES LA BARRA DE NAVEGACION SUPERIOR-->
+    <header class="header" id="header">
+      <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <div class="container-fluid">
+          <img
+            src="{% static 'app/img/planta.gif' %}"
+            alt=""
+            style="width: 50px; border-radius: 50%"
+          />
+          <!--border-raduis le da forma circular al icono -->
+
+          <!--AQUI SE ENCUENTRA EL BOTON QUE SE DESPLIEGA HACIA ABAJO EN EL NAVBAR CON SU RESPECTVIOS LINKS-->
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#collapsibleNavbar"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="../perfil">Perfil</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <!--DENTRO DE HEADER VA EL NAVBAR QUE ES LA BARRA DE NAVEGACION SUPERIOR-->
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="m-1 container-fluid">
+          <div class="col-sm-4 justify-content-center d-flex">
+            {% for aux in listaCarrito %}
+            <div class="m-3 card" style="width: 400px">
+              {% if aux.codigo.imagen %}
+              <img
+                src="{{ aux.codigo.imagen.url }}"
+                class="img-fluid item-img w-100 mb-3"
+                height="200"
+              />
+              {% else %}
+              <img
+                src="{% static 'app/img/defecto.jpg' %}"
+                class="img-fluid item-img w-100 mb-3"
+              />
+              {% endif %}
+
+              <div class="card-body">
+                <h4 class="card-title">
+                  {{aux.codigo.nombreP}} ({{aux.codigo.marca}})
+                </h4>
+
+                <div class="d-flex justify-content-center">
+                  <p class="card-text">${{aux.codigo.precio}}</p>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-flex justify-content-center">
+      <form action="" method="POST">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger btn-vaciar">
+          Vaciar carrito <i class="fa-solid fa-trash"></i>
+        </button>
+      </form>
+    </div>
+
+    <!--Parte final de la pagina el footer-->
+    <footer class="py-3 my-4">
+      <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+        <li class="nav-item">
+          <a href="../index" class="nav-link px-2 text-muted">Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a href="../nosotros" class="nav-link px-2 text-muted"
+            >Sobre nosotros</a
+          >
+        </li>
+      </ul>
+      <p class="text-center text-muted">
+        &copy; 2022 Fundación "El Jardincito", Inc
+      </p>
+    </footer>
+    <!--Parte final de la pagina el footer-->
+  </body>
+</html>

@@ -1,0 +1,20 @@
+intalar anaconda3 de google
+pip install django
+pip install pillow
+descargar sql lite en extensiones
+pip install sql lite
+pip install django-admin-interface
+pip install django-crispy-forms
+pip install djangorestframework 
+pip install markdown
+pip install django-filter
+pip install requests
+Mysql extensiones
+pip install mysqlclient
+pip install pymysql
+thunder client extensiones
+
+
+
+pass para cualquier uso
+claveforanea123345

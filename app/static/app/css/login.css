@@ -1,0 +1,23 @@
+#main {
+  
+  background-image: url("../img/login2.jpg");
+  height: 600px; /* You must set a specified height */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+  padding-top: 175px;
+}
+
+#formulario {
+  text-align: center;
+  width: 58%;
+}
+
+#form2 {
+  margin-left: 550px;
+  color:rgb(7, 1, 1);
+  border-style: double;
+  background-image: conic-gradient(green, yellow, green);
+  text-decoration: overline;
+  text-decoration-style: solid;
+}
